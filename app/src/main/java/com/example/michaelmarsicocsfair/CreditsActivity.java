@@ -14,10 +14,6 @@ public class CreditsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_credits);
 
         Button returnHome = findViewById(R.id.returnHome);
-
-        returnHome.setOnClickListener(view -> {
-            Intent toHome = new Intent(CreditsActivity.this, MainActivity.class);
-            startActivity(toHome);
-        });
+        returnHome.setOnClickListener(view -> finish());
     }
 }

@@ -14,10 +14,6 @@ public class TutorialActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tutorial);
 
         Button returnHome = findViewById(R.id.returnHome);
-
-        returnHome.setOnClickListener(view -> {
-            Intent toHome = new Intent(TutorialActivity.this, MainActivity.class);
-            startActivity(toHome);
-        });
+        returnHome.setOnClickListener(view -> finish());
     }
 }
