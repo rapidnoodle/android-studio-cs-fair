@@ -11,6 +11,7 @@
         android:id="@+id/mainHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
         android:text="LaneFinder - Home"
         android:textColor="@color/white"
         android:textSize="34sp"
@@ -75,6 +76,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.21"
-        app:srcCompat="@drawable/lt_cs" />
+        app:srcCompat="@drawable/lane_finder_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
