@@ -9,73 +9,91 @@
 
     <TextView
         android:id="@+id/mainHeader"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="363dp"
+        android:layout_height="54dp"
         android:fontFamily="@font/poppins_bold"
-        android:text="LaneFinder - Home"
-        android:textColor="@color/white"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/mainLogo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.32" />
-
-    <Button
-        android:id="@+id/findMyClassroom"
-        android:layout_width="236dp"
-        android:layout_height="88dp"
-        android:backgroundTint="@color/yellow"
-        android:text="Find My Classroom"
-        android:textColor="@color/black"
-        android:textSize="24sp"
+        android:gravity="right"
+        android:text="LaneFinder"
+        android:textColor="@color/dark_green"
+        android:textSize="38sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainLogo"
-        app:layout_constraintVertical_bias="0.19" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.04" />
 
-    <Button
-        android:id="@+id/howItWorks"
-        android:layout_width="236dp"
+    <android.widget.Button
+        android:id="@+id/findMyClassroom"
+        android:layout_width="265dp"
         android:layout_height="88dp"
-        android:backgroundTint="@color/yellow"
+        android:background="@drawable/pill_button"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Find My \nClassroom"
+        android:textColor="@color/dark_green"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.57" />
+
+    <android.widget.Button
+        android:id="@+id/howItWorks"
+        android:layout_width="265dp"
+        android:layout_height="88dp"
+        android:background="@drawable/pill_button"
+        android:fontFamily="@font/poppins_bold"
         android:text="How it Works"
-        android:textColor="@color/black"
-        android:textSize="24sp"
+        android:textColor="@color/dark_green"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/findMyClassroom"
-        app:layout_constraintVertical_bias="0.19999999" />
+        app:layout_constraintVertical_bias="0.16000003" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/allowAccess"
-        android:layout_width="236dp"
+        android:layout_width="265dp"
         android:layout_height="88dp"
-        android:backgroundTint="@color/yellow"
+        android:background="@drawable/pill_button"
+        android:fontFamily="@font/poppins_bold"
         android:text="Credits"
-        android:textColor="@color/black"
-        android:textSize="24sp"
+        android:textColor="@color/dark_green"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/howItWorks" />
+        app:layout_constraintTop_toBottomOf="@+id/howItWorks"
+        app:layout_constraintVertical_bias="0.42000002" />
 
     <ImageView
         android:id="@+id/mainLogo"
-        android:layout_width="168dp"
-        android:layout_height="119dp"
+        android:layout_width="274dp"
+        android:layout_height="185dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.21"
+        app:layout_constraintVertical_bias="0.247"
         app:srcCompat="@drawable/lane_finder_icon" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="84dp"
+        android:layout_height="79dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.03"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.02"
+        app:srcCompat="@drawable/ltcs_notext_logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

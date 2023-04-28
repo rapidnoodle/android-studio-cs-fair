@@ -7,33 +7,48 @@
     android:background="@color/green"
     tools:context=".TutorialActivity">
 
-    <Button
+    <android.widget.Button
         android:id="@+id/returnHome"
-        android:layout_width="236dp"
+        android:layout_width="265dp"
         android:layout_height="88dp"
-        android:backgroundTint="@color/yellow"
+        android:background="@drawable/pill_button"
+        android:fontFamily="@font/poppins_bold"
         android:text="Return Home"
-        android:textColor="@color/black"
-        android:textSize="24sp"
+        android:textColor="@color/dark_green"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.95" />
+        app:layout_constraintVertical_bias="0.92" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="84dp"
+        android:layout_height="79dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.03"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.02"
+        app:srcCompat="@drawable/ltcs_notext_logo" />
 
     <TextView
         android:id="@+id/mainHeader"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="LaneFinder - Tutorial"
-        android:textColor="@color/white"
-        android:textSize="34sp"
+        android:layout_width="363dp"
+        android:layout_height="54dp"
+        android:fontFamily="@font/poppins_bold"
+        android:gravity="right"
+        android:text="Tutorial"
+        android:textColor="@color/dark_green"
+        android:textSize="38sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05" />
-
+        app:layout_constraintVertical_bias="0.04" />
 </androidx.constraintlayout.widget.ConstraintLayout>
