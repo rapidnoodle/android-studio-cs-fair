@@ -66,18 +66,21 @@
 
     <TextView
         android:id="@+id/mainContent"
-        android:layout_width="349dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/poppins"
         android:gravity="center"
         android:text="In order for LaneFinder to track your current location at Lane Tech, we need you to allow us to access your location permissions! Please click the &quot;Allow Access&quot; button below to continue to the FindMyClassroom activity."
         android:textColor="@color/dark_green"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/allowAccess"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.67" />
+        app:layout_constraintTop_toBottomOf="@+id/mainLogo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

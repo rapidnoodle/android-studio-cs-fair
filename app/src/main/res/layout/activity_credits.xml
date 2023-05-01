@@ -7,6 +7,23 @@
     android:background="@color/green"
     tools:context=".CreditsActivity">
 
+    <TextView
+        android:id="@+id/mainContent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        android:fontFamily="@font/poppins"
+        android:gravity="center"
+        android:text="Lead Developer: Michael Marsico\n\nTechnological Assistant: Ms. Roscoe\n\nIndoor GPS: Ajnas Kt"
+        android:textColor="@color/dark_green"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/returnHome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
     <android.widget.Button
         android:id="@+id/returnHome"
         android:layout_width="265dp"
