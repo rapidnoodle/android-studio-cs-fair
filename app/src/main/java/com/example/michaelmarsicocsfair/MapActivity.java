@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.example.michaelmarsicocsfair.wifips.ScanBackground;
+
 public class MapActivity extends AppCompatActivity {
 
     // PLAN:
@@ -19,5 +21,8 @@ public class MapActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+
+        ScanBackground wifips = new ScanBackground(getApplicationContext());
+        wifips.execute();
     }
 }
