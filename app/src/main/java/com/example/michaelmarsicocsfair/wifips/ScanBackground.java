@@ -1,14 +1,11 @@
 package com.example.michaelmarsicocsfair.wifips;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -23,7 +20,7 @@ import android.util.Log;
 public class ScanBackground extends AsyncTask<Void, Void, PositionData> {
 
     PositionData pos;
-    private int readingCount = 30;
+    private final int readingCount = 15;
     private int currentCount;
     public boolean canRun;
     public String currentPositionName;
@@ -186,7 +183,7 @@ public class ScanBackground extends AsyncTask<Void, Void, PositionData> {
 //        result.setText("Nearest point :  "+ closestPosition);
 
         // BIG MONEY
-//        Toast.makeText(context, "Nearest point :  " + closestPosition, Toast.LENGTH_LONG).show();
+        // TODO: Update the current location here
         currentPositionName = closestPosition;
 
         res += "\nCurrent:\n" + positionData.toString();

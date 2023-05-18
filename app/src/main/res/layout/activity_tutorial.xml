@@ -7,6 +7,24 @@
     android:background="@color/green"
     tools:context=".TutorialActivity">
 
+    <TextView
+        android:id="@+id/tutorialContent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:fontFamily="@font/poppins"
+        android:gravity="center"
+        android:text="Note: LaneFinder uses Wifi to track your location inside of Lane Tech, so please connect to CPS GUEST wifi for the best expierence possible with this application.\n\nHow To Use:\n1. Click &quot;Find My Classroom&quot;\n2. Accept Location Permissions\n3. Select Starting Location (with wifi, it will automatically update for you)\n4. Select your desired location\n5. Follow the path to your destination!"
+        android:textColor="@color/dark_green"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.45" />
+
     <android.widget.Button
         android:id="@+id/returnHome"
         android:layout_width="265dp"

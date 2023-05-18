@@ -4,12 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.example.michaelmarsicocsfair.pathfinding.ConfigActivity;
 
 public class RequestPermissionsActivity extends AppCompatActivity {
 
@@ -36,7 +37,7 @@ public class RequestPermissionsActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == 011) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Intent toActivity = new Intent(RequestPermissionsActivity.this, MapActivity.class);
+                Intent toActivity = new Intent(RequestPermissionsActivity.this, ConfigActivity.class);
                 startActivity(toActivity);
             } else {
                 Toast.makeText(RequestPermissionsActivity.this, "Location Permissions Failed! Please try again.", Toast.LENGTH_LONG).show();

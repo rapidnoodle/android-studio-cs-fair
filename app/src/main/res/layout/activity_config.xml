@@ -5,15 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/green"
-    tools:context=".RequestPermissionsActivity">
+    tools:context=".pathfinding.ConfigActivity">
 
     <android.widget.Button
-        android:id="@+id/allowAccess"
+        android:id="@+id/startButton"
         android:layout_width="265dp"
         android:layout_height="88dp"
         android:background="@drawable/pill_button"
         android:fontFamily="@font/poppins_bold"
-        android:text="Allow Access"
+        android:text="Begin Route"
         android:textColor="@color/dark_green"
         android:textSize="26sp"
         android:textStyle="bold"
@@ -24,17 +24,35 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.92" />
 
-    <ImageView
-        android:id="@+id/mainLogo"
-        android:layout_width="274dp"
-        android:layout_height="185dp"
+    <Spinner
+        android:id="@+id/fromWhere"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:background="@color/yellow"
+        android:padding="10dp"
+        android:spinnerMode="dropdown"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.247"
-        app:srcCompat="@drawable/lane_finder_icon" />
+        app:layout_constraintVertical_bias="0.35" />
+
+    <Spinner
+        android:id="@+id/toWhere"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:background="@color/yellow"
+        android:padding="10dp"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -65,22 +83,34 @@
         app:layout_constraintVertical_bias="0.04" />
 
     <TextView
-        android:id="@+id/mainContent"
-        android:layout_width="0dp"
+        android:id="@+id/fromHeader"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="15dp"
-        android:fontFamily="@font/poppins"
-        android:gravity="center"
-        android:text="In order for LaneFinder to track your current location at Lane Tech, we need you to allow us to access your location permissions! Please click the &quot;Allow Access&quot; button below to continue using LaneFinder services."
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Current Location"
         android:textColor="@color/dark_green"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/allowAccess"
+        app:layout_constraintBottom_toTopOf="@+id/fromWhere"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainLogo" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
+    <TextView
+        android:id="@+id/toHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Desired Location"
+        android:textColor="@color/dark_green"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/toWhere"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

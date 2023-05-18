@@ -18,7 +18,11 @@
         android:theme="@style/Theme.MichaelMarsicoCSFair"
         tools:targetApi="31">
         <activity
-            android:name=".MapActivity"
+            android:name=".pathfinding.MapsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_maps" />
+        <activity
+            android:name=".pathfinding.ConfigActivity"
             android:exported="false" />
         <activity
             android:name=".RequestPermissionsActivity"
@@ -38,8 +42,11 @@
             </intent-filter>
         </activity>
         <service
-            android:name="MapActivity"
+            android:name=".pathfinding.MapsActivity"
             android:foregroundServiceType="location" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${MAPS_API_KEY}" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
