@@ -176,18 +176,18 @@ public class ScanBackground extends AsyncTask<Void, Void, PositionData> {
                 closestPosition = positionsData.get(i).getName();
             }
         }
+
         if (min_distance == PositionData.MAX_DISTANCE){
             closestPosition = "N/A";
             Toast.makeText(context,"You are out of range of the selected building",Toast.LENGTH_LONG).show();
         }
-//        result.setText("Nearest point :  "+ closestPosition);
 
         // BIG MONEY
         // TODO: Update the current location here
         currentPositionName = closestPosition;
 
         res += "\nCurrent:\n" + positionData.toString();
-        Log.v("Result",res);
+        Log.v("Result", res);
     }
 
 }

@@ -45,7 +45,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      */
     private static final String TAG = "MapsActivity";
 
-    private static Context context; //yeah I know
+    private static Context context;
 
     /**
      *  In this version there are only one level,
@@ -235,7 +235,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 throw new IllegalStateException("Unexpected value: " + selectedLevel);
         }
 
-        ops.inSampleSize = 10; //help device not to eat memory
+        ops.inSampleSize = 10; // help device not to eat memory
 
         groundOverlayOptions.image(BitmapDescriptorFactory.fromBitmap(bitmap));
         mapOverlay = mMap.addGroundOverlay(groundOverlayOptions);
@@ -365,7 +365,44 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         drawOnLevel();
     }
 
+    public void setCurrentPath(String fromTag, String toTag) {
+        /**
+         * If we have no saved instance this is the first load
+         * so we have to calculate everything.
+         */
+        if (!savedInstance) {
+            Graph g = new Graph(edges);
 
+            try {
+                g.setUpEdgeLengths(new ArrayList());
+                g.calculateShortestDistances(parseInt(fromTag), parseInt(toTag));
+                g.calculatePath();
+            } catch (Exception e) {
+                Toast.makeText(getApplicationContext(), getString(R.string.error_path), Toast.LENGTH_SHORT).show();
+            }
+
+            path = g.getPath();
+
+            int pathEndNodeID = path.get(path.size() - 1) - 1;
+            String[] pathEndNode = (String[]) nodeList.get(pathEndNodeID);
+            selectedLevel = Integer.parseInt(pathEndNode[4]);
+        }
+
+        /**
+         * Map ini continued. We needed data for these
+         */
+        ActivityManager.MemoryInfo memoryInfo = getAvailableMemory();
+        if(!memoryInfo.lowMemory) {
+            setOverlay();
+
+            bounds = mapOverlay.getBounds();
+            mMap.setLatLngBoundsForCameraTarget(bounds); //this makes it so you can't drag the map far from the overlay
+
+            drawOnLevel();
+        } else {
+            Toast.makeText(getApplicationContext(), getText(R.string.error_memory),Toast.LENGTH_LONG);
+        }
+    }
 
     /**
      * Manipulates the map once available.
@@ -417,44 +454,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         }
 
-        /**
-         * If we have no saved instance this is the first load
-         * so we have to calculate everything.
-         */
+        setCurrentPath(mapData[0], mapData[1]);
 
-        if (!savedInstance) {
-
-            Graph g = new Graph(edges);
-
-            try {
-                g.setUpEdgeLengths(edgeAvoid);
-                g.calculateShortestDistances(parseInt(mapData[0]), parseInt(mapData[1]));
-                g.calculatePath();
-            } catch (Exception e) {
-                Toast.makeText(getApplicationContext(), getString(R.string.error_path), Toast.LENGTH_SHORT).show();
-            }
-
-            path = g.getPath();
-
-            int pathEndNodeID = path.get(path.size() - 1) - 1;
-            String[] pathEndNode = (String[]) nodeList.get(pathEndNodeID);
-            selectedLevel = Integer.parseInt(pathEndNode[4]);
-        }
-
-        /**
-         * Map ini continued. We needed data for these
-         */
-        ActivityManager.MemoryInfo memoryInfo = getAvailableMemory();
-        if(!memoryInfo.lowMemory) {
-            setOverlay();
-
-            bounds = mapOverlay.getBounds();
-            mMap.setLatLngBoundsForCameraTarget(bounds); //this makes it so you can't drag the map far from the overlay
-
-            drawOnLevel();
-        } else {
-            Toast.makeText(getApplicationContext(), getText(R.string.error_memory),Toast.LENGTH_LONG);
-        }
-
-    }//end of onMapReady
+    }
 }
