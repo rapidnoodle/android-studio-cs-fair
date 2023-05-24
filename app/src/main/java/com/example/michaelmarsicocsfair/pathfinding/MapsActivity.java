@@ -33,6 +33,7 @@ import com.google.android.gms.maps.model.GroundOverlay;
 import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.io.InputStream;
@@ -54,6 +55,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      *  selector
      */
     private static Integer selectedLevel = 1;
+
+    public String[] mapData;
+
+    private Polyline pathPolyline;
+    private ArrayList<Circle> circleList;
 
     /**
      * Path, nodes and edges
@@ -123,6 +129,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_maps);
 
         MapsActivity.context = getApplicationContext();
+        circleList = new ArrayList<>();
 
         /**
          * if this is not the first load (device rotated for example) we
@@ -168,7 +175,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mapFragment.getMapAsync(this);
 
-
         /**
          * Back button
          */
@@ -205,11 +211,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * Back to main activity
      */
     public void backToMenu() {
-
         Intent intent = new Intent(this, ConfigActivity.class);
         this.finish();
         startActivity(intent);
-
     }
 
     /**
@@ -261,12 +265,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
-
+    private void deletePolylines() {
+        if (pathPolyline != null) pathPolyline.remove();
+        for (Circle circle : circleList) {
+            circle.remove();
+        }
+    }
 
     /**
      * draw overlay, points (nodes) and lines (edges)
      */
     private void drawOnLevel() {
+
+        deletePolylines();
 
         int nodeID;
 
@@ -311,6 +322,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         .zIndex(1000)
                         .clickable(true);
                 Circle circle = mMap.addCircle(pathCircleOptions);
+                circleList.add(circle);
                 circle.setTag(tag);
 
                 mMap.setOnCircleClickListener(new GoogleMap.OnCircleClickListener() {
@@ -340,7 +352,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         }
 
-        mMap.addPolyline(pathLineOptions);
+        pathPolyline = mMap.addPolyline(pathLineOptions);
 
     }
 
@@ -351,7 +363,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      */
     private void levelButtonPress(int sLevel) {
 
-        mMap.clear(); //this is very important. without this crashes are many
+        mMap.clear(); // this is very important. without this crashes are many
 
         selectedLevel = sLevel;
 
@@ -388,20 +400,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             selectedLevel = Integer.parseInt(pathEndNode[4]);
         }
 
-        /**
-         * Map ini continued. We needed data for these
-         */
-        ActivityManager.MemoryInfo memoryInfo = getAvailableMemory();
-        if(!memoryInfo.lowMemory) {
-            setOverlay();
+        drawOnLevel();
+    }
 
-            bounds = mapOverlay.getBounds();
-            mMap.setLatLngBoundsForCameraTarget(bounds); //this makes it so you can't drag the map far from the overlay
-
-            drawOnLevel();
-        } else {
-            Toast.makeText(getApplicationContext(), getText(R.string.error_memory),Toast.LENGTH_LONG);
-        }
+    public void updatePositionOnMap(String newPos) {
+        deletePolylines();
+        mapData[0] = newPos;
+        setCurrentPath(mapData[0], mapData[1]);
     }
 
     /**
@@ -428,7 +433,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.getUiSettings().setRotateGesturesEnabled(false);
         mMap.setMinZoomPreference(13);
-        mMap.setMaxZoomPreference(16);
+        mMap.setMaxZoomPreference(20);
 
 
         groundOverlayOptions = new GroundOverlayOptions()
@@ -441,20 +446,25 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Intent intent = getIntent();
         String message = intent.getStringExtra(mapActivity);
 
-        String[] mapData = message.split(";");
+        mapData = message.split(";");
 
         ArrayList<String> edgeAvoid = new ArrayList(); //edges we want to avoid
 
         if (mapData.length > 2) {
-
             for (int i = 2; i < mapData.length; i++) {
-
                 edgeAvoid.add(mapData[i]);
             }
-
         }
 
-        setCurrentPath(mapData[0], mapData[1]);
+        ActivityManager.MemoryInfo memoryInfo = getAvailableMemory();
+        if(!memoryInfo.lowMemory) {
+            setOverlay();
+            bounds = mapOverlay.getBounds();
+            mMap.setLatLngBoundsForCameraTarget(bounds);
+            setCurrentPath(mapData[0], mapData[1]);
+        } else {
+            Toast.makeText(getApplicationContext(), getText(R.string.error_memory),Toast.LENGTH_LONG);
+        }
 
     }
 }

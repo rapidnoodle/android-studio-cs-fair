@@ -14,6 +14,8 @@ import java.util.TimerTask;
 
 import android.util.Log;
 
+import com.example.michaelmarsicocsfair.pathfinding.MapsActivity;
+
 /**
  * Created by Sony on 4/19/2015.
  */
@@ -185,6 +187,7 @@ public class ScanBackground extends AsyncTask<Void, Void, PositionData> {
         // BIG MONEY
         // TODO: Update the current location here
         currentPositionName = closestPosition;
+
 
         res += "\nCurrent:\n" + positionData.toString();
         Log.v("Result", res);
